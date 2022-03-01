@@ -1,0 +1,33 @@
+{% extends 'home.html' %}
+
+{% block title %}Register{% endblock %}
+
+{% block content %}
+
+<a href="{% url 'home' %}">
+    <- Home
+</a>
+
+<div class="card" style="margin-top: 20px;width: 65%;">
+    <div class="card-header">
+        Register
+    </div>
+    <div class="card-body">
+        {% if message %}
+        <div class="alert alert-danger" role="alert">
+            {{message}}
+        </div><br>
+        {% endif %}
+        <form method="post" style="width: 50%;">{% csrf_token %}
+            <input type="email" placeholder="Email" name="username" class="form-control" required>
+            <br>
+            <input type="password" placeholder="Password" name="password" class="form-control" required>
+            <br>
+            <input type="password" placeholder="Retype Password" name="password_confirm" class="form-control" required>
+            <br>
+            <button type="submit" class="btn btn-primary">Register</button>
+        </form>
+    </div>
+</div>
+
+{% endblock %}

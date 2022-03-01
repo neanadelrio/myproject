@@ -1,0 +1,30 @@
+{% extends 'home.html' %}
+
+{% block title %}Show Credentials{% endblock %}
+
+{% block content %}
+
+<a href="{% url 'home' %}">
+    <- Home
+</a>
+
+<table class="table bg-light" style="margin-top: 20px;width: 65%;">
+    <tr>
+        <th>Website</th>
+        <th>Username / Email</th>
+        <th>Password</th>
+        <th>Action</th>
+    </tr>
+    {% for i in objs %}
+    <tr>
+        <td>{{i.site}}</td>
+        <td>{{i.user}}</td>
+        <td>{{i.pass}}</td>
+        <td>
+            <a href="{% url 'delete-creds' i.iden %}">Delete</a> / <a href="{% url 'edit-creds' i.iden %}">Edit</a>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+
+{% endblock %}

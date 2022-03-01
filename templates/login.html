@@ -1,0 +1,31 @@
+{% extends 'home.html' %}
+
+{% block title %}Login{% endblock %}
+
+{% block content %}
+
+<a href="{% url 'home' %}">
+    <- Home
+</a>
+
+<div class="card" style="margin-top: 20px;width: 65%;">
+    <div class="card-header">
+        Login
+    </div>
+    <div class="card-body">
+        {% if message %}
+        <div class="alert alert-danger" role="alert">
+            {{message}}
+        </div><br>
+        {% endif %}
+        <form method="post" style="width: 50%;">{% csrf_token %}
+            <input type="email" placeholder="Email" name="username" class="form-control" required>
+            <br>
+            <input type="password" placeholder="Password" name="password" class="form-control" required>
+            <br>
+            <button type="submit" class="btn btn-primary">Login</button>
+        </form>
+    </div>
+</div>
+
+{% endblock %}
